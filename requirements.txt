@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+lancedb
+pyarrow
+torch
+open_clip_torch
+Pillow
+numpy
+openslide-python
