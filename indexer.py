@@ -5,7 +5,7 @@ from database import get_lancedb_connection
 
 # Load BiomedCLIP instead of standard SigLIP
 MODEL_NAME = "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.cuda.is_available() else "cpu")
 
 print(f"Loading BiomedCLIP on {device}...")
 model, _, preprocess = open_clip.create_model_and_transforms(MODEL_NAME)
