@@ -7,7 +7,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-REST_API-009688.svg)
 ![OpenSlide](https://img.shields.io/badge/OpenSlide-WSI_Processing-lightgrey.svg)
 
-## 📌 Overview
+## Overview
 PathoSearch is a high-performance **Content-Based Image Retrieval (CBIR)** system engineered to process, analyze, and search massive Whole Slide Images (WSIs) used in digital pathology. 
 
 Medical scans routinely exceed $50k \times 50k$ pixels, making them impossible to load into standard memory. PathoSearch solves this bottleneck by implementing dynamic image tiling via **OpenSlide**, extracting high-density 256x256 tissue patches while automatically filtering out irrelevant background data. These localized patches are indexed using **Microsoft's BiomedCLIP** semantic embeddings and **LanceDB**, enabling sub-millisecond similarity searches. 
@@ -16,7 +16,7 @@ Exposed via a low-latency **FastAPI** backend, this architecture empowers medica
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 * **Massive Scale Image Processing:** Capable of handling $50k \times 50k$ high-resolution `.svs` and `.tiff` formats without RAM overflow, utilizing dynamic grid-chunking.
 * **Smart Background Filtration:** Implements statistical heuristics to automatically identify and drop "white glass" background patches, optimizing both compute time and vector storage space.
@@ -26,7 +26,7 @@ Exposed via a low-latency **FastAPI** backend, this architecture empowers medica
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 ### **Core Technologies**
 * **Image Processing:** OpenSlide, OpenCV, Pillow (PIL)
@@ -43,7 +43,7 @@ Exposed via a low-latency **FastAPI** backend, this architecture empowers medica
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### 1. System Dependencies (Required)
 PathoSearch requires the OpenSlide C-library installed on your machine to read proprietary medical image formats.
@@ -72,7 +72,7 @@ Access the interactive Swagger documentation at `http://127.0.0.1:8000/docs`.
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### `POST /upload_slide/`
 Upload a `.svs` or `.tiff` Whole Slide Image. The system will slice, filter, and index the entire slide in the background.
@@ -84,5 +84,5 @@ Upload a 256x256 image of a specific tissue structure or cellular anomaly.
 
 ---
 
-## 🧠 Domain Applicability
+## Domain Applicability
 This system was specifically designed to tackle real-world engineering challenges in Life Sciences and Healthcare laboratories. The architecture provides a scalable foundation for disease stratification, diagnostic accuracy enhancements, and efficient study management workflows.
