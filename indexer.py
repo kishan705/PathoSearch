@@ -3,7 +3,7 @@ import open_clip
 import pyarrow as pa
 from database import get_lancedb_connection
 
-# Load BiomedCLIP instead of standard SigLIP
+# Load BiomedCLIP
 MODEL_NAME = "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
 device = torch.device("mps" if torch.cuda.is_available() else "cpu")
 
