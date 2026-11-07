@@ -28,11 +28,11 @@ the spot marked.
 
 **Search by description**
 
-![Search results](screenshots/search.png)
+![Search results](ss1.png)
 
 | Slide library | Slide viewer |
 |---|---|
-| ![Slide library](screenshots/slides.png) | ![Slide viewer](screenshots/viewer.png) |
+| ![Slide library](ss2.png) | ![Slide viewer](ss3.png) |
 
 > Add your own screenshots to a `screenshots/` folder with these names.
 
