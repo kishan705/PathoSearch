@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# PathoSearch runtime data (slides, vectors, database)
+backend/data/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+.env

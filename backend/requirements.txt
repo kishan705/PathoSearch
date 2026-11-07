@@ -1,0 +1,19 @@
+# Web API
+fastapi>=0.110
+uvicorn[standard]>=0.29
+python-multipart>=0.0.9
+
+# Images and slides
+numpy
+Pillow>=10.1
+openslide-python>=1.4
+openslide-bin          # OpenSlide C library as a pip package (Windows/macOS/Linux)
+
+# Vector search
+lancedb>=0.20
+pyarrow>=14
+
+# BiomedCLIP (needs transformers for its PubMedBERT text encoder)
+torch
+open_clip_torch>=2.24
+transformers>=4.40,<5
