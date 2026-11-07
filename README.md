@@ -1,7 +1,7 @@
 # PathoSearch 🔬
 
 **Search whole-slide pathology images by image or by description, and see exactly where each match sits on the slide.**
-
+live demo - https://stupendous-fairy-8e4426.netlify.app/
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-BiomedCLIP-EE4C2C.svg?logo=pytorch&logoColor=white)
 ![OpenSlide](https://img.shields.io/badge/OpenSlide-WSI-lightgrey.svg)
