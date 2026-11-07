@@ -9,7 +9,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688.svg?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-UI-61dafb.svg?logo=react&logoColor=white)
 
-live demo - https://stupendous-fairy-8e4426.netlify.app/
+# live demo - https://stupendous-fairy-8e4426.netlify.app/
 
 PathoSearch is a **content-based image retrieval (CBIR)** system for digital pathology.
 Whole-slide images (WSIs) are often 50,000 × 50,000 pixels or more. PathoSearch finds the
