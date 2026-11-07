@@ -1,13 +1,15 @@
 # PathoSearch 🔬
 
 **Search whole-slide pathology images by image or by description, and see exactly where each match sits on the slide.**
-live demo - https://stupendous-fairy-8e4426.netlify.app/
+
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-BiomedCLIP-EE4C2C.svg?logo=pytorch&logoColor=white)
 ![OpenSlide](https://img.shields.io/badge/OpenSlide-WSI-lightgrey.svg)
 ![LanceDB](https://img.shields.io/badge/LanceDB-Vector_DB-000000.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688.svg?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-UI-61dafb.svg?logo=react&logoColor=white)
+
+live demo - https://stupendous-fairy-8e4426.netlify.app/
 
 PathoSearch is a **content-based image retrieval (CBIR)** system for digital pathology.
 Whole-slide images (WSIs) are often 50,000 × 50,000 pixels or more. PathoSearch finds the
