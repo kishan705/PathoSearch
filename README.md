@@ -9,20 +9,76 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688.svg?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React_19-UI-61dafb.svg?logo=react&logoColor=white)
 
-# live demo - https://stupendous-fairy-8e4426.netlify.app/
+**Live demo:** https://stupendous-fairy-8e4426.netlify.app/
 
-PathoSearch is a **content-based image retrieval (CBIR)** system for digital pathology.
-Whole-slide images (WSIs) are often 50,000 × 50,000 pixels or more. PathoSearch finds the
-tissue on each slide, cuts it into patches of the same physical size (128 µm at 20×), turns
-every patch into a vector with Microsoft's **BiomedCLIP**, and stores them in **LanceDB**.
+PathoSearch is a **content-based image retrieval (CBIR)** system for digital pathology: in
+short, a search engine for microscope slides.
 
-You can then:
+---
+
+## The problem
+
+When a pathologist examines tissue, a thin slice of it is stained and placed on a glass slide.
+Hospitals and labs now scan these slides into digital images called **whole-slide images
+(WSIs)**. One scan is huge, often 50,000 × 50,000 pixels or more and up to several gigabytes,
+and a lab can collect thousands of them.
+
+That collection is hard to use because you can't search inside it. A slide usually comes with
+only a file name and maybe a diagnosis in a separate report. Nothing records *what is where* on
+the slide. So questions like these can only be answered by opening slide after slide and
+scrolling through them by eye:
+
+* "Where else in our collection is there tissue that looks like this?"
+* "Find me examples of lymphocytes around a blood vessel for a teaching set."
+* "Which slides contain fat tissue, or this unusual pattern I just spotted?"
+
+Searching the images directly is hard too:
+
+* **They're too big.** No AI model can take a whole slide at once. It has to be cut into small
+  squares, and one slide can give tens of thousands of them.
+* **Most of the scan isn't tissue.** Blank glass, dust, pen marks and unscanned black areas waste
+  time and produce junk matches unless they're removed first.
+* **Scans differ in zoom.** Slides are scanned at 20× or 40× on different machines, so the same
+  structure shows up at different sizes unless everything is brought to one scale.
+* **There are no labels.** Nobody has written a caption for each region, so ordinary keyword
+  search has nothing to match against.
+* **A match has to be checkable.** A result is only useful if you can see which slide it came
+  from and exactly where on it, and look at it yourself.
+
+## What PathoSearch does
+
+PathoSearch makes a slide collection searchable like a photo library:
+
+1. It finds the real tissue on each slide and ignores glass, dust and ink.
+2. It cuts the tissue into small squares (**patches**) that all cover the same real area, 128 µm
+   at 20× magnification, whatever scanner made the slide.
+3. It runs every patch through Microsoft's **BiomedCLIP**, an AI model trained on biomedical
+   images and their captions. The model turns each patch into a list of 512 numbers (a
+   **vector**) that describes how it looks. Similar-looking tissue gets similar numbers.
+4. It stores the vectors in **LanceDB**, a database built for finding the closest vectors fast.
+
+Because BiomedCLIP puts text and images in the same space, a written description can be compared
+with tissue directly. You can:
 * **Describe** what you're looking for, e.g. *"lymphocytes around a blood vessel"*.
 * **Drop in an image** of a tissue structure and find patches that look like it.
 * **Click any spot on a slide** and find similar tissue on all your other slides.
 
 Every result shows the slide, the exact X/Y position and a preview, and opens the slide with
 the spot marked.
+
+> PathoSearch is a research and teaching tool. It is not a medical device and isn't meant for
+> diagnosis.
+
+### Key terms
+
+| Term | Meaning |
+|---|---|
+| Whole-slide image (WSI) | A scan of an entire glass slide, stored as a pyramid of zoom levels (for example a `.svs` file) |
+| Patch | A small square cut from a slide; here 256 × 256 pixels covering 128 µm of tissue |
+| µm/pixel (MPP) | How much real tissue one pixel shows. 0.5 µm/pixel is about 20× magnification |
+| Vector (embedding) | The 512 numbers BiomedCLIP gives a patch or a text query; similar content, similar numbers |
+| Cosine similarity | The score that compares two vectors; closer to 1 means more alike |
+| Level-0 | The full-resolution layer of a slide; every X/Y position in PathoSearch uses it |
 
 ---
 
@@ -35,8 +91,6 @@ the spot marked.
 | Slide library | Slide viewer |
 |---|---|
 | ![Slide library](ss2.png) | ![Slide viewer](ss3.png) |
-
-> Add your own screenshots to a `screenshots/` folder with these names.
 
 ---
 
